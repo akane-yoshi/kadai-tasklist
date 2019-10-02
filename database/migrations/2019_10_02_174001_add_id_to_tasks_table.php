@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTitleToMicropostsTable extends Migration
+class AddIdToTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddTitleToMicropostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('microposts', function (Blueprint $table) {
-            $table->string('status');
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->integer('user_id')->unsigned()->index();
         });
     }
 
@@ -25,8 +25,8 @@ class AddTitleToMicropostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('microposts', function (Blueprint $table) {
-            $table->dropColumn('status');
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
     }
 }
